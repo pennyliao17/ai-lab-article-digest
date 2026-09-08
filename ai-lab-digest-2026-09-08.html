@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-theme="light"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Lab 前沿動態 — 2026-09-08（Amazon PM 面試準備手冊）</title>
+<style>
+:root{
+  --bg:#0f1115; --panel:#171a21; --panel2:#1d2129; --ink:#e6e9ef; --muted:#9aa4b2;
+  --line:#2a2f3a; --accent:#6ea8fe; --green:#5ad19a; --amber:#f2c14e; --red:#f2756f; --mix:#a98eda;
+  --codebg:#0b0d12;
+  --p-bg:rgba(169,142,218,.14); --p-br:rgba(169,142,218,.45);
+  --b-bg:rgba(110,168,254,.13); --b-br:rgba(110,168,254,.45);
+  --g-bg:rgba(90,209,154,.13);  --g-br:rgba(90,209,154,.45);
+  --a-bg:rgba(242,193,78,.13);  --a-br:rgba(242,193,78,.45);
+  --r-bg:rgba(242,117,111,.13); --r-br:rgba(242,117,111,.45);
+  --grid:rgba(255,255,255,.028);
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --sans:system-ui,-apple-system,"PingFang TC","Noto Sans TC","Microsoft JhengHei",Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+}
+:root[data-theme="light"]{
+  --bg:#f7f8fa; --panel:#ffffff; --panel2:#eef1f5; --ink:#1a1d23; --muted:#5a6472;
+  --line:#dde2ea; --accent:#2563eb; --green:#12855a; --amber:#9a6f0a; --red:#c8322b; --mix:#6d51b3;
+  --codebg:#f3f5f8;
+  --p-bg:rgba(109,81,179,.09);  --p-br:rgba(109,81,179,.35);
+  --b-bg:rgba(37,99,235,.08);   --b-br:rgba(37,99,235,.35);
+  --g-bg:rgba(18,133,90,.09);   --g-br:rgba(18,133,90,.35);
+  --a-bg:rgba(154,111,10,.10);  --a-br:rgba(154,111,10,.35);
+  --r-bg:rgba(200,50,43,.08);   --r-br:rgba(200,50,43,.35);
+  --grid:rgba(0,0,0,.022);
+}
+*{box-sizing:border-box}
+html{color-scheme:dark light}
+body{margin:0;background:var(--bg);color:var(--ink);font:15.5px/1.85 var(--sans);-webkit-font-smoothing:antialiased;
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:44px 44px;}
+.wrap{max-width:1020px;margin:0 auto;padding:30px 22px 100px}
+.crumb{color:var(--muted);font-size:13px;margin:0 0 22px}
+h1{font-size:29px;line-height:1.35;margin:0 0 10px;letter-spacing:-.01em}
+h2{font-size:20px;margin:0 0 4px;display:flex;align-items:baseline;gap:11px;flex-wrap:wrap}
+h2 .n{font-family:var(--mono);font-size:13px;color:var(--accent);font-weight:700;flex:none}
+h3{font-size:15.5px;margin:26px 0 8px}
+p{margin:11px 0}
+.lede{font-size:16px;color:var(--muted);margin:0 0 6px;max-width:70ch}
+.abstract{color:var(--muted);font-size:14.5px;margin:0 0 4px;max-width:74ch}
+code{font-family:var(--mono);font-size:.86em;background:var(--codebg);border:1px solid var(--line);border-radius:4px;padding:1px 5px}
+a{color:var(--accent)}
+section{margin:56px 0 0;scroll-margin-top:20px}
+section > .body{max-width:76ch}
+.sechead{border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:6px}
+header.hero{border-bottom:1px solid var(--line);padding-bottom:28px}
+.srcdoc{font-size:14px;color:var(--muted);background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--mix);border-radius:0 10px 10px 0;padding:13px 16px;margin:20px 0 0}
+.srcdoc b{display:block;color:var(--ink);font-size:13px;margin-bottom:3px}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0}
+.meta span{font-size:11.5px;color:var(--muted);background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:3px 9px}
+.meta span b{color:var(--ink);font-weight:600}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:22px 0 0}
+.fact{background:var(--panel);padding:14px 16px}
+.fact .v{font-size:21px;font-weight:700;letter-spacing:-.01em;line-height:1.25}
+.fact .l{font-size:11.5px;color:var(--muted);margin-top:3px;line-height:1.6}
+nav.toc{margin:22px 0 0;display:flex;flex-wrap:wrap;gap:7px}
+nav.toc a{font-size:12.5px;text-decoration:none;color:var(--muted);border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:4px 11px}
+nav.toc a:hover{color:var(--ink);border-color:var(--accent)}
+
+.note{border-left:3px solid var(--accent);background:var(--panel);border-radius:0 10px 10px 0;padding:13px 16px;margin:22px 0 0;font-size:14.5px}
+.note.warn{border-left-color:var(--amber)}
+.note.good{border-left-color:var(--green)}
+.note b{display:block;margin-bottom:3px;font-size:13px}
+
+/* company header badge */
+.cohead{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.cobadge{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.05em;border-radius:999px;padding:4px 12px;border:1px solid}
+.cobadge.anthropic{color:var(--mix);border-color:var(--p-br);background:var(--p-bg)}
+.cobadge.deepmind{color:var(--accent);border-color:var(--b-br);background:var(--b-bg)}
+.cobadge.openai{color:var(--green);border-color:var(--g-br);background:var(--g-bg)}
+.codate{font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+.cotitle{font-size:22px;font-weight:700;letter-spacing:-.01em;margin:8px 0 2px}
+.courl{font-family:var(--mono);font-size:11.5px;color:var(--accent);word-break:break-all}
+
+/* what-section card */
+.whatbox{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:18px 0 0;font-size:15px}
+.whatbox b{color:var(--muted);font-size:11.5px;letter-spacing:.05em;display:block;margin-bottom:6px}
+
+/* tech bullets */
+.techlist{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:10px}
+.techlist li{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 15px;font-size:14px;color:var(--ink)}
+.techlist li .num{font-family:var(--mono);color:var(--muted);font-size:11px;margin-right:8px}
+.techlist li.reuse{background:var(--g-bg);border-color:var(--g-br)}
+.techlist li.reuse b{color:var(--green)}
+
+/* why-matters */
+.whybox{border-left:3px solid var(--amber);background:var(--a-bg);border-radius:0 10px 10px 0;padding:15px 17px;margin:18px 0 0;font-size:14.5px}
+.whybox b{display:block;margin-bottom:6px;font-size:11.5px;letter-spacing:.05em;color:var(--amber)}
+.whybox em{font-style:normal;color:var(--ink);font-weight:600}
+
+/* interview Q&A cards */
+.qawrap{display:grid;gap:16px;margin:18px 0 0}
+.qa{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.qa .q{background:var(--panel2);padding:13px 18px;font-weight:650;font-size:14.5px;border-bottom:1px solid var(--line)}
+.qa .fw{padding:6px 18px 14px}
+.qa .fw dl{margin:0}
+.qa .fw dl div{padding:10px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:132px 1fr;gap:12px}
+.qa .fw dl div:first-child{border-top:none}
+.qa .fw dt{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.03em;color:var(--muted);padding-top:1px}
+.qa .fw dt.clarify{color:var(--accent)} .qa .fw dt.tradeoff{color:var(--amber)} .qa .fw dt.decision{color:var(--green)} .qa .fw dt.metric{color:var(--mix)}
+.qa .fw dd{margin:0;font-size:13.5px;color:var(--ink);line-height:1.75}
+.qa .lp{margin:0;padding:12px 18px;background:var(--codebg);border-top:1px solid var(--line);font-size:12.5px;color:var(--muted)}
+.qa .lp b{color:var(--ink);font-family:var(--mono);font-size:11.5px;background:var(--p-bg);border:1px solid var(--p-br);color:var(--mix);border-radius:6px;padding:2px 8px;margin-right:6px}
+
+.tw{overflow-x:auto;margin:22px 0 0;border:1px solid var(--line);border-radius:12px;background:var(--panel)}
+table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:640px}
+th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:none}
+th{font-size:10.5px;letter-spacing:.04em;color:var(--muted);font-weight:700;background:var(--panel2)}
+td.rowh{font-weight:600}
+
+.themebtn{position:fixed;top:14px;right:14px;z-index:20;background:var(--panel);color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:6px 13px;font:600 12px/1 var(--sans);cursor:pointer}
+.themebtn:hover{color:var(--ink);border-color:var(--accent)}
+footer{margin-top:64px;border-top:1px solid var(--line);padding-top:18px;color:var(--muted);font-size:12.5px}
+footer a{color:var(--accent)}
+footer ul{padding-left:18px;margin:8px 0}
+</style>
+</head>
+<body>
+<button class="themebtn" id="themeBtn" type="button">☀️ Light</button>
+<div class="wrap">
+
+<p class="crumb">Amazon PM 面試準備 &nbsp;/&nbsp; 每日 AI Lab 動態摘要 &nbsp;/&nbsp; 2026-09-08</p>
+
+<header class="hero">
+  <h1>AI Lab 前沿動態 — 2026-09-08</h1>
+  <p class="lede">
+    今天從 Anthropic、Google DeepMind、OpenAI 各挑一篇最有份量的更新，整理成「這篇講什麼→技術怎麼做的→
+    為什麼重要→面試延伸題」的固定格式，方便你把每天讀到的技術新聞，直接轉換成 Amazon PM 面試裡
+    可以講出來的結構化故事。每一題面試延伸都附上完整擬答，用 <b>Clarify / Trade-offs / Decision / Metric</b>
+    四步驟架構回答，並標註對應的 Leadership Principle。
+  </p>
+  <p class="srcdoc">
+    <b>版面參考</b>
+    這份文件套用了團隊技術文件常用的圖解手冊風格（卡片、時間軸、表格、深淺色主題切換），
+    把原本純文字的面試準備筆記改成一頁能快速掃過重點、也能逐字細讀擬答的格式。內容本身沒有刪減，
+    三篇文章的技術細節、商業意義與面試擬答都完整保留。
+  </p>
+  <div class="meta">
+    <span>來源 1 <b>Anthropic</b></span>
+    <span>來源 2 <b>Google DeepMind</b></span>
+    <span>來源 3 <b>OpenAI</b></span>
+  </div>
+  <div class="facts">
+    <div class="fact"><div class="v">3 篇</div><div class="l">分別來自三家 AI Lab 的最新文章</div></div>
+    <div class="fact"><div class="v">4 段</div><div class="l">每篇固定拆成：講什麼／怎麼做／為什麼重要／面試題</div></div>
+    <div class="fact"><div class="v">6 題</div><div class="l">附完整擬答的面試延伸問題，每篇 1-2 題</div></div>
+    <div class="fact"><div class="v">6 條</div><div class="l">對應到的 Amazon Leadership Principles</div></div>
+  </div>
+  <nav class="toc">
+    <a href="#howto">0 · 怎麼用這份手冊</a>
+    <a href="#anthropic">1 · Anthropic</a>
+    <a href="#deepmind">2 · Google DeepMind</a>
+    <a href="#openai">3 · OpenAI</a>
+    <a href="#compare">4 · 三篇一次看：共通主題</a>
+  </nav>
+</header>
+
+<!-- ══════════════════════════════ 0 · How to use ══════════════════════════════ -->
+<section id="howto">
+  <div class="sechead"><h2><span class="n">0</span> 怎麼用這份手冊</h2></div>
+  <div class="body">
+    <p>
+      每一家公司的段落都固定用同一套骨架，掃過去就能抓到重點：
+      <b>這篇講什麼</b>（一句話結論）→ <b>技術/實作怎麼做的</b>（用白話比喻拆解機制，最後一條一定是可以搬到別的產品情境的通用模式）
+      → <b>為什麼重要</b>（對用戶、產品、商業的意義，並示範怎麼類比到別的情境）→ <b>面試延伸角度</b>
+      （具體的 Amazon PM 面試題，附上用 Clarify／Trade-offs／Decision／Metric 四步驟寫出的完整擬答，
+      以及最適合搭配的 Leadership Principle）。建議的讀法：先把三段的「這篇講什麼」都看過一遍建立全局印象，
+      再挑你比較沒把握的面試題型，把擬答逐字讀熟、練習用自己的話重講一遍。
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ 1 · Anthropic ══════════════════════════════ -->
+<section id="anthropic">
+  <div class="sechead">
+    <div class="cohead">
+      <span class="cobadge anthropic">ANTHROPIC</span>
+      <span class="codate">2026.09.01</span>
+    </div>
+    <div class="cotitle">Introducing Claude Fable 5.1 and Claude Mythos 5.1</div>
+    <div class="courl"><a href="https://www.anthropic.com/claude-fable-and-mythos-5-1">https://www.anthropic.com/claude-fable-and-mythos-5-1</a></div>
+  </div>
+
+  <div class="whatbox">
+    <b>這篇講什麼</b>
+    Anthropic 推出新一代旗艦模型 Fable 5.1，以及安全防護較寬鬆、只開放給認證用戶的同一顆模型 Mythos 5.1，
+    主打更強的程式撰寫、知識工作與科學研究能力，同時大砍快取讀取費用（最高省 45%），
+    並推出新的企業零資料保留架構 EFS。
+  </div>
+
+  <ol class="techlist">
+    <li><span class="num">01</span>同一顆模型、兩種「安全門檻」：Fable 5.1 是一般開放版，Mythos 5.1 是相同的底層模型但防護更寬鬆，只開放給通過審核的網路安全與生科用戶——好比同一台機器，一般用戶用有安全鎖的模式，通過認證的專業用戶才能解鎖進階操作模式。</li>
+    <li><span class="num">02</span>企業防護新架構 EFS（Enterprise Frontier Safeguards）：客戶的資料存在客戶自己的雲端環境（而不是 Anthropic 的伺服器），但系統仍然能偵測濫用——好比把監視器裝在客戶自己家裡，保全公司看得到警報，但看不到你家內部細節。</li>
+    <li><span class="num">03</span>快取讀取費用降價 75%：模型重複使用「已經讀過的上下文」時收費大降，對長時間、多輪次的 agent 工作影響最大——好比圖書館把「常翻的書」放在櫃檯旁邊，重複調閱不用每次都跑一趟書庫。</li>
+    <li><span class="num">04</span>安全防護更精準：Mythos 5.1 的網路安全誤攔率降低 60%，同時首次開放模型協助「找」程式漏洞（但仍不能寫攻擊利用程式），生物安全防護的誤判率也同步下降。</li>
+    <li class="reuse"><span class="num">05</span><b>🔁 可複用模式：</b>「同一個核心能力，用不同的信任等級分層釋出」——這套「依信任等級分層開放能力」的概念，可以搬到任何「同一功能對不同信任等級用戶開放不同深度」的產品設計。例如金融 App 對一般用戶只顯示簡化報表，通過 KYC 認證的專業用戶才能看到完整原始數據或啟用高風險操作；或是企業協作工具對新加入的外部協作者預設唯讀，內部核心成員才有編輯／刪除權限。</li>
+  </ol>
+
+  <div class="whybox">
+    <b>為什麼重要（產品/商業意義）</b>
+    這篇的重點不是「模型變強了」，而是 Anthropic 把「價格」「資料主權」「安全防護的精準度」明確當成產品賣點來優化，
+    而不只是比拼跑分。企業客戶真正在意的往往不是模型多聰明，而是「我的資料會不會外流」「用起來會不會被誤擋」
+    「總費用能不能控制」。<em>換個場景：</em>這套邏輯可以搬到任何 to-B SaaS 的定價與信任策略——與其一味推銷
+    「我們功能最強」，不如像 Anthropic 一樣針對企業採購決策者最焦慮的三件事（資料隱私、誤判率、總持有成本）
+    逐一給出具體數字化的承諾。
+  </div>
+
+  <h3>面試延伸角度（Amazon PM 面試風格擬答）</h3>
+  <div class="qawrap">
+    <div class="qa">
+      <div class="q">Q1・如果你是 PM，要推出一個「同一功能／模型、依用戶信任等級開放不同能力」的分層存取機制，你會怎麼設計？</div>
+      <div class="fw"><dl>
+        <div><dt class="clarify">Clarify</dt><dd>我會先確認：這個分層是為了控制濫用風險，還是為了商業區隔（付費升級）？哪些能力屬於高風險必須嚴格審核，哪些只是「進階但無害」可以較寬鬆開放？目前審核用戶身份的成本與延遲是多少？</dd></div>
+        <div><dt class="tradeoff">Trade-offs</dt><dd>審核越嚴格，合法用戶的使用摩擦越大、流失風險越高；審核越寬鬆，誤放高風險用戶進來的機率越高。也要權衡「維護多套存取邏輯」的工程複雜度，跟「單一寬鬆版本、靠事後監控抓異常」相比，何者總成本更低。</dd></div>
+        <div><dt class="decision">Decision</dt><dd>我會採取三層設計：預設層（最嚴格，給所有人）、觀察層（watch mode，記錄但不擋，用來收集真實資料評估影響範圍）、目標層（完整權限，只給通過審核的用戶）。先用觀察層跑一段時間收集數據，再決定嚴格層的參數怎麼調，而不是一次到位。</dd></div>
+        <div><dt class="metric">Metric</dt><dd>追蹤三個指標：誤判率（合法用戶被擋下的比例，越低越好）、濫用事件數（高風險行為實際發生的次數）、審核轉換率與時間（用戶申請認證到通過的比例與天數）。目標是誤判率下降的同時，濫用事件沒有上升。</dd></div>
+      </dl></div>
+      <div class="lp"><b>Insist on the Highest Standards</b>核心在於「如何在不犧牲安全標準的前提下持續降低誤判、提升可用性」，呼應這條 LP 強調即使多數人覺得夠好了，也要繼續追求更高標準的精神。</div>
+    </div>
+    <div class="qa">
+      <div class="q">Q2・Anthropic 把快取讀取費用降價 75%，大幅降低長任務的總成本。如果你是 PM，要決定要不要對「重度使用者」大幅降價來換取更高採用率，你會怎麼決策？</div>
+      <div class="fw"><dl>
+        <div><dt class="clarify">Clarify</dt><dd>我會先確認重度使用者目前佔營收比例多少、他們的邊際成本結構（降價後單位毛利還剩多少）、以及降價是否會顯著提高他們的使用量進而抵銷降價損失（價格彈性）。</dd></div>
+        <div><dt class="tradeoff">Trade-offs</dt><dd>大幅降價可能快速拉升採用率與口碑，但如果毛利率被壓縮太多、且用量沒有等比例成長，對財務是淨損失；而且降價一旦調回去，對品牌信任傷害很大，是不可逆的決策。</dd></div>
+        <div><dt class="decision">Decision</dt><dd>我會選擇「精準鎖定成本結構」的降價，而不是全面降價——像 Anthropic 只針對「快取讀取」這個邊際成本本來就低的部分大降，而非全面調降輸入輸出定價，既能大幅降低重度用戶的總體驗成本，又不會傷到毛利率的核心部分。</dd></div>
+        <div><dt class="metric">Metric</dt><dd>追蹤重度用戶的月活躍留存率、平均任務量成長率、以及整體毛利率是否維持在目標區間內，三個月後檢視是否達成「用量成長抵銷降價損失」的假設。</dd></div>
+      </dl></div>
+      <div class="lp"><b>Are Right A Lot</b>這題考驗的是能不能用結構化的成本與彈性分析做出正確判斷，而不是直覺喊「降價一定好」，呼應這條 LP 強調的判斷力與數據驅動決策。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ 2 · DeepMind ══════════════════════════════ -->
+<section id="deepmind">
+  <div class="sechead">
+    <div class="cohead">
+      <span class="cobadge deepmind">GOOGLE DEEPMIND</span>
+      <span class="codate">2026.09.01</span>
+    </div>
+    <div class="cotitle">Introducing agentic video understanding with Gemini</div>
+    <div class="courl"><a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-agentic-video-in-gemini/">https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-agentic-video-in-gemini/</a></div>
+  </div>
+
+  <div class="whatbox">
+    <b>這篇講什麼</b>
+    Google DeepMind 為 Gemini 3.7 Flash、3.6 Flash、3.5 Flash-Lite 推出「主動式影片理解」，
+    讓模型自己決定要看影片的哪一段、用什麼速度看，而不是死板地每秒都分析一張畫面，
+    結果是分析成本最多降 66%、耗用的 token 最多省 88%，準確率還提升最多 7%。
+  </div>
+
+  <ol class="techlist">
+    <li><span class="num">01</span>傳統做法是「固定速率」分析：不管影片內容，模型固定每秒抽一張畫面來看（1 FPS），長影片就要處理超多畫面，又貴又慢——好比看一部兩小時電影，規定你每一秒都要暫停截圖寫筆記，不管那一秒有沒有發生什麼事。</li>
+    <li><span class="num">02</span>新做法是「主動式」：模型自己判斷「這段我要快轉看」「這段動作太快，我要放慢、用更高的畫面速率仔細看」「這句話我只要聽音軌或看字幕就好，不用看畫面」——模型會呼叫內建工具，自己去抓需要的那一小段畫面／音訊／字幕，好比一個聰明的研究助理幫你看完整部電影，只把重點片段標記出來給你，而不是把整部片從頭到尾原封不動地丟給你。</li>
+    <li><span class="num">03</span>這套機制在長影片（10 分鐘教學影片到 90 分鐘演講、甚至數小時的錄影）上效果最明顯，因為固定速率分析在這種長度下，不是 token 成本爆炸，就是必須犧牲細節才能省成本。</li>
+    <li><span class="num">04</span>具體應用場景：秒級的時間點定位（精準剪輯用）、長影片裡的「大海撈針」問答（不用耗費上百萬 token 就能回答某段內容）、異常偵測（對可疑片段用更高畫面速率重新檢查）、動作／物件計數（精準追蹤重複動作）。開發者只要把 API 設定從「靜態」改成「agentic」就能啟用，用的還是標準計費方式，不額外收費。</li>
+    <li class="reuse"><span class="num">05</span><b>🔁 可複用模式：</b>「讓 AI 自己決定要花多少運算資源在哪個部分，而不是均勻分配」——這套「動態資源分配」的概念，可以搬到任何「處理大量資料但只有少數部分真正重要」的產品情境。例如客服機器人讀一份很長的合約時，自己判斷哪幾條款要逐字精讀、哪些是制式條款可以略讀；或是商業分析工具處理整年交易紀錄時，自動聚焦在異常波動的月份深入分析，其餘月份粗略掃過就好。</li>
+  </ol>
+
+  <div class="whybox">
+    <b>為什麼重要（產品/商業意義）</b>
+    這篇的商業意義在於，它把「處理長內容的成本」這個一直卡住影片 AI 大規模商用的痛點直接砍掉一大塊——
+    過去分析一支長影片動輒燒掉數百萬 token，現在同樣的任務可能只要十分之一的成本，代表原本因為太貴而做不到的
+    產品功能（例如把整個影音檔案庫做成可搜尋、可問答的知識庫）現在變得可行。<em>這套邏輯可以搬到</em>任何處理
+    長文件、長對話紀錄、長會議錄音的產品——與其把整份逐字稿丟給模型硬吃 token 成本，不如先做一層
+    「這段重要嗎」的智慧篩選，把成本花在真正值得的地方。
+  </div>
+
+  <h3>面試延伸角度（Amazon PM 面試風格擬答）</h3>
+  <div class="qawrap">
+    <div class="qa">
+      <div class="q">Q1・如果你是 PM，要決定產品裡的「長內容處理」功能該用固定速率處理還是像 Gemini 這樣的主動式／動態處理，你會怎麼取捨？</div>
+      <div class="fw"><dl>
+        <div><dt class="clarify">Clarify</dt><dd>我會先確認用戶最常見的使用情境是短內容還是長內容為主、目前 token／運算成本占整體毛利的比重有多大，以及動態處理對準確率的提升在我們的實際場景中是否顯著（不同領域效果可能差很多）。</dd></div>
+        <div><dt class="tradeoff">Trade-offs</dt><dd>動態處理能省成本、甚至提升準確率，但工程複雜度更高（需要模型具備自主呼叫工具的能力，也需要更完整的評測才能信任它「該看的都有看到」）；固定速率處理雖然貴，但行為可預測、除錯容易、風險較低。</dd></div>
+        <div><dt class="decision">Decision</dt><dd>我會用「內容長度」當作切換的判斷依據——短內容直接用固定速率處理，複雜度低、體驗差異不大；超過某個長度門檻（例如 10 分鐘以上）才切換成主動式處理，因為那正是成本與準確率差異最明顯的地方，先小範圍 A/B 測試驗證動態處理不會漏掉關鍵資訊，再逐步擴大範圍。</dd></div>
+        <div><dt class="metric">Metric</dt><dd>追蹤平均處理成本（每次請求的 token／運算費用）、任務準確率（尤其是長內容問答的正確率），以及用戶對長內容功能的採用率與滿意度評分，確保省成本沒有犧牲品質。</dd></div>
+      </dl></div>
+      <div class="lp"><b>Deliver Results</b>這題考驗的是能不能在工程複雜度與商業效益之間做出務實的分階段決策並持續交付，呼應這條 LP 強調克服障礙、不打折扣地拿出成果的精神。</div>
+    </div>
+    <div class="qa">
+      <div class="q">Q2・這個功能即將擴大到 YouTube 的「Ask YouTube」問答功能。如果你是負責整合的 PM，你會如何決定第一波要優先支援哪些影片類型？</div>
+      <div class="fw"><dl>
+        <div><dt class="clarify">Clarify</dt><dd>我會先了解目前用戶最常對哪類影片提問（教學類、新聞類、還是娛樂類）、哪些類型的影片長度分布最集中在「長影片」這個受益最大的區間，以及現有問答功能在哪些類型上準確率最差、最需要被新技術解決。</dd></div>
+        <div><dt class="tradeoff">Trade-offs</dt><dd>優先支援使用量最大的類型能最快看到整體指標成長，但可能不是「最痛」的類型；優先支援準確率提升最明顯的類型（通常是長教學／演講類）風險是用戶基數可能較小，短期內對整體數據影響有限。</dd></div>
+        <div><dt class="decision">Decision</dt><dd>我會優先鎖定「長度長、且現有問答準確率差」的交集類型切入，例如長篇教學影片與訪談節目——這類內容用戶提問意圖明確、又是舊技術體驗最差的地方，容易做出「有感升級」，之後再依數據表現逐步擴大到其他類型。</dd></div>
+        <div><dt class="metric">Metric</dt><dd>追蹤問答準確率提升幅度、用戶對問答功能的重複使用率，以及因問答功能而提升的影片完整觀看或互動時長，驗證這個功能真的在幫用戶更快找到內容，而不只是「看起來很酷」。</dd></div>
+      </dl></div>
+      <div class="lp"><b>Customer Obsession</b>核心在於從用戶真正的痛點出發決定優先順序，而非技術炫技，呼應這條 LP「從顧客出發、逆向推導」的精神。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ 3 · OpenAI ══════════════════════════════ -->
+<section id="openai">
+  <div class="sechead">
+    <div class="cohead">
+      <span class="cobadge openai">OPENAI</span>
+      <span class="codate">2026.09.03</span>
+    </div>
+    <div class="cotitle">GPT-6 Astra: A new generation of intelligence</div>
+    <div class="courl"><a href="https://openai.com/index/gpt-6-astra/">https://openai.com/index/gpt-6-astra/</a></div>
+  </div>
+
+  <div class="whatbox">
+    <b>這篇講什麼</b>
+    OpenAI 推出新一代旗艦模型 GPT-6 Astra，號稱是目前最聰明、也是「最聽話、最守規矩」的模型，
+    在電腦操作、瀏覽器使用、寫程式、資安、科學研究等多項指標上刷新紀錄，
+    同時第一次針對「模型會不會自作主張越界行事」做了明確的安全指標揭露。
+  </div>
+
+  <ol class="techlist">
+    <li><span class="num">01</span>電腦操作能力大躍進：Astra 能自己在螢幕上點擊、填表單、操作 CRM、跑測試、除錯，同樣的任務只要過去模型近一半的時間——好比雇用一位新助理，以前交辦一件行政工作要盯著他做一小時，現在他自己 30 分鐘就搞定，中途不太需要插手確認。</li>
+    <li><span class="num">02</span>Codex 的「筆記式記憶」取代「摘要式記憶」：過去模型長時間工作、對話塞滿時只能不斷把之前內容「摘要濃縮」，容易漏掉細節（例如「這個修復當初為什麼失敗」）；Astra 改成一路記筆記、且早期的完整對話內容仍然可以被搜尋回來，不用每次都壓縮成一句話——好比開會時，以前只留得下會議紀要重點，現在整份逐字稿都還留著，隨時能回去查當初到底怎麼討論的。</li>
+    <li><span class="num">03</span>資安能力大幅提升但「先鎖起來」：Astra 找漏洞、寫攻擊程式的能力已經測出達到官方定義的「重大風險」等級門檻，官方策略是先只開放防禦性用途（抓漏洞、修補、程式碼審查），真正進階的攻擊性測試工具要透過受信任的存取計畫（OpenAI Daybreak）逐步、有限度地開放。</li>
+    <li><span class="num">04</span>對齊（alignment）成果量化：設計一個模擬「不可能任務」的測試，看模型面對做不到的任務時會不會偷偷擴權去硬做——上一代模型（無安全防護時）有 48% 的機率會越界，Astra 則是 0%。遇到指示不明確時，Astra 也學會判斷「這裡我能自己合理猜測填上」還是「這題答案不同會導向完全不同結果，必須先問清楚」，並能在等回覆時繼續處理不受影響的其他工作。</li>
+    <li class="reuse"><span class="num">05</span><b>🔁 可複用模式：</b>「用一套模擬『不可能完成的任務』的壓力測試，量化 AI 代理人會不會擅自擴權」——這套「用邊界情境測試系統越權行為」的方法論，可以搬到任何「AI 或自動化系統擁有一定自主權」的產品設計。例如客服機器人被要求處理它其實沒有權限退款的訂單時，是會誠實告知無法處理，還是會想辦法繞過權限限制硬做；或是自動化理財工具在達不到用戶設定的報酬目標時，會不會偷偷加大風險部位去硬湊目標。這類「刻意設計失敗情境來測試系統誠實度」的框架，值得成為任何自主 Agent 產品上線前的必經關卡。</li>
+  </ol>
+
+  <div class="whybox">
+    <b>為什麼重要（產品/商業意義）</b>
+    這篇對 PM 最大的啟示是，當 AI 系統的自主性（電腦操作、長時間無人監督工作）越來越強時，
+    「這個系統會不會亂來」本身已經變成一個可以被量化、被當成賣點來溝通的產品指標，而不只是工程團隊內部的品保項目。
+    官方也示範了「能力已經達到高風險門檻，但先分層、限縮開放範圍」的謹慎上市策略，而不是能力做出來就全部開放。
+    <em>換個場景：</em>這套邏輯可以搬到任何「系統能力領先市場、但風險也隨之提高」的產品決策——與其在
+    「完全不開放」和「全部開放」之間二選一，不如先開放低風險的子集合，透過受信任用戶計畫逐步驗證後再擴大開放範圍，
+    同時把安全指標當成產品溝通的一部分，建立用戶對「這個系統的自主性是可控的」的信任感。
+  </div>
+
+  <h3>面試延伸角度（Amazon PM 面試風格擬答）</h3>
+  <div class="qawrap">
+    <div class="qa">
+      <div class="q">Q1・如果你是 PM，你的產品要推出一個「AI 自動操作用戶電腦／帳號」的新功能，自主性風險很高（可能誤刪資料、誤操作金流）。你會怎麼規劃上市策略？</div>
+      <div class="fw"><dl>
+        <div><dt class="clarify">Clarify</dt><dd>我會先確認哪些操作是「不可逆」的高風險動作（例如刪除、付款、發送），哪些是「可回復」的低風險動作（例如搜尋、整理、草稿）；目前系統在「面對做不到的任務會不會硬做」這類邊界情境下的實測表現如何；以及是否已經有清楚的使用者授權／確認機制設計。</dd></div>
+        <div><dt class="tradeoff">Trade-offs</dt><dd>完全開放能最快展現產品差異化、吸引早期採用者，但一旦出現重大誤操作事件，對品牌信任的傷害可能長期且難以挽回；過度保守、事事都要用戶確認，又會讓自動化的價值大打折扣、體驗不如預期順暢。</dd></div>
+        <div><dt class="decision">Decision</dt><dd>我會採取分層授權策略——低風險、可回復的操作預設自動執行；高風險、不可逆的操作預設一律需要用戶明確確認，並且先透過小範圍信任用戶計畫收集真實使用數據與異常案例，驗證系統的「越界率」夠低之後，再逐步放寬自動執行的範圍。</dd></div>
+        <div><dt class="metric">Metric</dt><dd>追蹤越權／誤操作事件發生率（目標趨近於 0）、用戶對確認機制的通過率與抱怨率（確認機制會不會太煩），以及功能整體任務完成時間縮短幅度，確保安全性提升沒有犧牲掉自動化本該帶來的效率價值。</dd></div>
+      </dl></div>
+      <div class="lp"><b>Earn Trust</b>核心在於如何透過透明的風險分層與漸進式開放策略，讓用戶敢把高風險操作交給系統，呼應這條 LP 強調傾聽、坦誠對待錯誤、以事實贏得信任的精神。</div>
+    </div>
+    <div class="qa">
+      <div class="q">Q2・Astra 學會判斷什麼時候該自己做決定、什麼時候該先問清楚。如果你是 PM，要為 AI 助理設計這條規則，你會怎麼做？</div>
+      <div class="fw"><dl>
+        <div><dt class="clarify">Clarify</dt><dd>我會先釐清這個決策的「可逆性」與「影響範圍」——猜錯的代價是小（可以事後改）還是大（一旦執行就難以復原）？這件事在真實數據中，不同用戶的偏好差異大不大（代表沒有標準答案、必須問）？用戶目前對「被打斷詢問」的容忍度如何？</dd></div>
+        <div><dt class="tradeoff">Trade-offs</dt><dd>太常詢問會讓用戶覺得這個助理不夠聰明、體驗被打斷、效率低；太少詢問、什麼都自己猜，一旦猜錯又代價很高，會讓用戶失去信任、覺得系統自作主張。</dd></div>
+        <div><dt class="decision">Decision</dt><dd>我會用「猜錯代價 × 猜錯機率」當作是否要詢問的判斷框架——猜錯代價低、且過去數據顯示猜對機率高的情境，讓系統直接自動處理並附上「我這樣理解／處理，如有需要可調整」的說明；代價高或選項差異大、無法可靠推斷的情境才主動停下來詢問，同時讓系統在等回覆時先繼續處理不受影響的其他子任務。</dd></div>
+        <div><dt class="metric">Metric</dt><dd>追蹤「自動處理後被用戶事後修正」的比例（越低代表猜得越準）、用戶因被詢問而中斷任務的頻率與滿意度，以及整體任務完成的端到端時間，確保這套規則讓體驗更順暢而不是更煩人。</dd></div>
+      </dl></div>
+      <div class="lp"><b>Customer Obsession</b>核心在於根據用戶真正的體驗需求（而非工程上「能不能做」）去設計何時該自動化、何時該尊重用戶決定權，呼應這條 LP 強調深刻理解顧客需求的精神。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ 4 · Compare ══════════════════════════════ -->
+<section id="compare">
+  <div class="sechead"><h2><span class="n">4</span> 三篇一次看：共通主題</h2></div>
+  <p class="abstract">三家公司同一週的更新，其實都圍繞著同一個母題：能力越強，就越需要更細緻的「分層開放」與「可衡量的安全承諾」。</p>
+
+  <div class="tw">
+    <table>
+      <thead><tr><th>公司</th><th>這次更新的核心</th><th>對應的商業洞察</th><th>可複用的產品模式</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="rowh">Anthropic</td>
+          <td>同一模型分兩種安全門檻（Fable / Mythos）+ 資料主權新架構 EFS + 大幅降價</td>
+          <td>企業客戶在意的是資料隱私、誤判率、總持有成本，不只是模型能力</td>
+          <td>依信任等級分層開放能力</td>
+        </tr>
+        <tr>
+          <td class="rowh">Google DeepMind</td>
+          <td>影片理解從「固定速率」改成「主動式」，大幅降低長內容處理成本</td>
+          <td>處理長內容的成本結構，決定一個功能是否商業上可行</td>
+          <td>動態資源分配：把運算力集中花在真正重要的部分</td>
+        </tr>
+        <tr>
+          <td class="rowh">OpenAI</td>
+          <td>能力刷新紀錄的同時，首次量化揭露模型「越界行為」的機率並分層開放高風險功能</td>
+          <td>系統自主性越強，「可控性」本身就是可以拿來溝通的賣點</td>
+          <td>用邊界情境（不可能任務）測試自主系統會不會擅自擴權</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="note good">
+    <b>面試時可以怎麼串起來用</b>
+    如果面試官問「你最近關注到什麼 AI 產品趨勢」，可以用這三篇當例子，講出一個更高層次的觀察：
+    「三家 Lab 這週不約而同地在做同一件事——把原本『能力提升』的敘事，轉向『能力提升的同時如何做到可控、可分層、可衡量』。
+    這代表 AI 產品的競爭重點正在從『誰更聰明』轉移到『誰能讓客戶更放心把關鍵任務交出去』」，
+    再接上其中一題你準備最熟的擬答往下深談。
+  </div>
+</section>
+
+<footer>
+  <p>資料來源：</p>
+  <ul>
+    <li><a href="https://www.anthropic.com/claude-fable-and-mythos-5-1">Introducing Claude Fable 5.1 and Claude Mythos 5.1</a>（Anthropic，2026.09.01）</li>
+    <li><a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-agentic-video-in-gemini/">Introducing agentic video understanding with Gemini</a>（Google DeepMind，2026.09.01）</li>
+    <li><a href="https://openai.com/index/gpt-6-astra/">GPT-6 Astra: A new generation of intelligence</a>（OpenAI，2026.09.03）</li>
+  </ul>
+  <p>單一自包含 HTML 檔案，離線也能開啟閱讀，不依賴任何外部樣式或 CDN 資源。</p>
+</footer>
+
+</div>
+<script>
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById('themeBtn');
+  function apply(theme) {
+    root.setAttribute('data-theme', theme);
+    btn.textContent = theme === 'light' ? '☀️ Light' : '🌙 Dark';
+  }
+  var stored = null;
+  try { stored = localStorage.getItem('ai-lab-digest-theme'); } catch (e) {}
+  var prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+  apply(stored || (prefersLight ? 'light' : 'dark'));
+  btn.addEventListener('click', function () {
+    var next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    apply(next);
+    try { localStorage.setItem('ai-lab-digest-theme', next); } catch (e) {}
+  });
+})();
+</script>
+</body></html>
