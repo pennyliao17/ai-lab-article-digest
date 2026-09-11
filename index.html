@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Lab Article Digest</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;900&family=Noto+Sans+TC:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F7F3EA;
+    --ink:#211F1B;
+    --ink-soft:#5B564C;
+    --ink-faint:#8C8676;
+    --line:#DED5BE;
+    --card:#FFFDF8;
+    --accent:#2F6F63;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;
+  }
+  .wrap{ max-width:720px; margin:0 auto; padding:64px 24px 100px; }
+  .eyebrow{
+    font-family:"JetBrains Mono",monospace; font-size:12.5px; font-weight:700;
+    letter-spacing:.14em; text-transform:uppercase; color:var(--accent);
+    margin-bottom:10px;
+  }
+  h1{
+    font-family:"Noto Serif TC",serif; font-weight:900; font-size:30px;
+    margin:0 0 10px;
+  }
+  .sub{ color:var(--ink-soft); font-size:15px; margin-bottom:40px; }
+
+  .list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:14px; }
+  .list li a{
+    display:flex; align-items:center; gap:16px;
+    background:var(--card); border:1px solid var(--line); border-radius:12px;
+    padding:18px 20px; text-decoration:none; color:var(--ink);
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .list li a:hover{ transform:translateX(3px); box-shadow:0 6px 18px rgba(0,0,0,.06); }
+  .badge{
+    flex:none; width:38px; height:38px; border-radius:9px;
+    background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center;
+    font-family:"JetBrains Mono",monospace; font-weight:700; font-size:14px;
+  }
+  .meta-col{ flex:1; min-width:0; }
+  .meta-col b{ display:block; font-size:16px; margin-bottom:3px; }
+  .meta-col span{ display:block; font-size:13px; color:var(--ink-faint); }
+  .arrow{ flex:none; color:var(--ink-faint); font-size:18px; }
+
+  footer{
+    margin-top:48px; padding-top:20px; border-top:1px dashed var(--line);
+    font-size:12.5px; color:var(--ink-faint);
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="eyebrow">AI Lab · Article Digest</div>
+    <h1>文章整理庫</h1>
+    <p class="sub">彙整整理過的文章筆記與報告，點選項目即可開啟完整內容。</p>
+
+    <ul class="list">
+      <li>
+        <a href="Lenny%20Newsletter%20AI%C3%97PM%20%E5%85%AD%E7%AF%87%E6%96%87%E7%AB%A0%E6%95%B4%E7%90%86%E7%AD%86%E8%A8%98.html">
+          <span class="badge">01</span>
+          <span class="meta-col">
+            <b>Lenny Newsletter AI×PM 六篇文章整理筆記</b>
+            <span>Lenny's Newsletter 六篇 AI × PM 相關文章的完整整理筆記</span>
+          </span>
+          <span class="arrow">→</span>
+        </a>
+      </li>
+      <li>
+        <a href="ai-lab-digest-2026-09-08.html">
+          <span class="badge">02</span>
+          <span class="meta-col">
+            <b>AI Lab Digest — 2026-09-08</b>
+            <span>2026 年 9 月 8 日彙整報告</span>
+          </span>
+          <span class="arrow">→</span>
+        </a>
+      </li>
+    </ul>
+
+    <footer>之後新增的整理文件，記得把連結加進這個列表裡。</footer>
+  </div>
+</body>
+</html>
